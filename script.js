@@ -2,10 +2,10 @@ const cover = document.querySelector("#cover");
 const portfolio = document.querySelector("#portfolio");
 const enterButton = document.querySelector("#enter-button");
 const wordmark = document.querySelector("#wordmark");
-const menuPage = document.querySelector("#menu-page");
-const innerPage = document.querySelector("#inner-page");
-const innerTitle = document.querySelector("#inner-title");
-const menuLinks = document.querySelectorAll(".menu-link");
+const aboutPage = document.querySelector("#about-page");
+const placeholderPage = document.querySelector("#placeholder-page");
+const placeholderTitle = document.querySelector("#placeholder-title");
+const menuLinks = document.querySelectorAll(".stitched-link");
 
 let currentPage = "home";
 
@@ -15,26 +15,26 @@ function enterPortfolio() {
   document.body.classList.remove("locked");
 }
 
-function showMenu() {
+function showAbout() {
   currentPage = "home";
-  menuPage.hidden = false;
-  innerPage.hidden = true;
+  aboutPage.hidden = false;
+  placeholderPage.hidden = true;
   wordmark.setAttribute("aria-label", "Return to the cover");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function showInnerPage(pageName, label) {
+function showPlaceholder(pageName, label) {
   currentPage = pageName;
-  menuPage.hidden = true;
-  innerPage.hidden = false;
-  innerTitle.textContent = label;
-  wordmark.setAttribute("aria-label", "Return to the portfolio menu");
+  aboutPage.hidden = true;
+  placeholderPage.hidden = false;
+  placeholderTitle.textContent = label;
+  wordmark.setAttribute("aria-label", "Return to the about page");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function handleWordmark() {
   if (currentPage !== "home") {
-    showMenu();
+    showAbout();
     return;
   }
 
@@ -46,5 +46,5 @@ function handleWordmark() {
 enterButton.addEventListener("click", enterPortfolio);
 wordmark.addEventListener("click", handleWordmark);
 menuLinks.forEach((link) => {
-  link.addEventListener("click", () => showInnerPage(link.dataset.page, link.textContent));
+  link.addEventListener("click", () => showPlaceholder(link.dataset.page, link.textContent));
 });
