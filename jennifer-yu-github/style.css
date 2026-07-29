@@ -1,0 +1,231 @@
+:root {
+  --ink: #191713;
+  --paper: #ede9e0;
+  --line: rgba(25, 23, 19, 0.28);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+body.locked { overflow: hidden; }
+button, a { color: inherit; }
+
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  background: #211d18;
+  transition: opacity 800ms cubic-bezier(.77,0,.18,1), visibility 800ms;
+}
+.cover.leaving { opacity: 0; visibility: hidden; pointer-events: none; }
+.cover-image {
+  position: absolute;
+  inset: -1px;
+  background: url("images/jennifer-yu-cover.png") center / cover no-repeat;
+  transform: scale(1.01);
+  transition: transform 1.6s cubic-bezier(.2,.7,0,1);
+}
+.cover:has(.label-button:hover) .cover-image,
+.cover:has(.label-button:focus-visible) .cover-image { transform: scale(1.025); }
+.label-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(280px, 36vw, 620px);
+  height: clamp(120px, 20vw, 270px);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+.label-button span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.label-button:focus-visible { outline: 1px solid #fff; outline-offset: 8px; }
+.cover-hint {
+  position: absolute;
+  right: 24px;
+  bottom: 19px;
+  margin: 0;
+  color: rgba(255,255,255,.68);
+  font: 11px/1 "Courier New", monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.portfolio {
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition: opacity 600ms 360ms ease, transform 800ms 300ms ease;
+}
+.portfolio.visible { opacity: 1; transform: none; pointer-events: auto; }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 0 3vw;
+  border-bottom: 1px solid var(--line);
+  background: rgba(237,233,224,.88);
+  backdrop-filter: blur(12px);
+}
+.wordmark {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: 18px/1 "Courier New", monospace;
+}
+nav { display: flex; gap: clamp(18px, 3vw, 48px); }
+nav a, footer a { text-decoration: none; }
+nav a {
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+nav a:hover, footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  min-height: calc(100vh - 72px);
+  padding: 7vw 3vw 4vw;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  margin: 0;
+  font: 11px/1.4 "Courier New", monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.intro h1 {
+  grid-column: 2;
+  align-self: center;
+  margin: 0;
+  font: 400 clamp(54px, 8.6vw, 150px)/.88 Georgia, "Times New Roman", serif;
+  letter-spacing: -.055em;
+}
+.intro-note {
+  grid-column: 2;
+  align-self: end;
+  max-width: 500px;
+  margin: 3rem 0 0 auto;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.projects { padding: 0 3vw; }
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0 54px;
+  font: 11px/1 "Courier New", monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.section-heading p { margin: 0; }
+.project {
+  display: grid;
+  grid-template-columns: 7vw minmax(320px, 1.8fr) 1fr 30px;
+  align-items: start;
+  gap: 2vw;
+  padding: 34px 0 38px;
+  border-top: 1px solid var(--line);
+  transition: padding 250ms ease;
+}
+.project:last-child { border-bottom: 1px solid var(--line); }
+.project:hover { padding-left: 10px; padding-right: 10px; }
+.project-number, .project-subtitle, .project-note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.project h2 {
+  margin: 0 0 10px;
+  font: 400 clamp(38px, 5vw, 76px)/.9 Georgia, "Times New Roman", serif;
+  letter-spacing: -.04em;
+}
+.project-subtitle {
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+}
+.project-note { max-width: 280px; }
+.project-arrow { font-size: 21px; }
+.about {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 2vw;
+  padding: 10vw 3vw;
+}
+.about h2 {
+  grid-column: 2;
+  max-width: 1100px;
+  margin: 0;
+  font: 400 clamp(38px, 5vw, 78px)/1 Georgia, "Times New Roman", serif;
+  letter-spacing: -.04em;
+}
+.about > p:last-child {
+  grid-column: 2;
+  max-width: 430px;
+  margin: 45px 0 0;
+  line-height: 1.6;
+}
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 20px;
+  padding: 24px 3vw;
+  border-top: 1px solid var(--line);
+  font: 12px/1.4 "Courier New", monospace;
+}
+footer p { margin: 0; }
+
+@media (max-width: 700px) {
+  .cover-image { background-size: auto 100%; }
+  .cover-hint { right: 16px; bottom: 16px; }
+  .site-header { min-height: 62px; padding: 0 18px; }
+  nav { gap: 14px; }
+  nav a { font-size: 10px; }
+  .intro {
+    grid-template-columns: 1fr;
+    min-height: calc(100svh - 62px);
+    padding: 36px 18px 28px;
+  }
+  .intro h1 {
+    grid-column: 1;
+    font-size: clamp(48px, 15vw, 78px);
+    line-height: .92;
+  }
+  .intro-note { grid-column: 1; margin-top: 36px; }
+  .projects { padding: 0 18px; }
+  .project {
+    grid-template-columns: 34px 1fr 22px;
+    gap: 10px;
+  }
+  .project-note { grid-column: 2 / 4; }
+  .project-arrow { grid-column: 3; grid-row: 1; }
+  .about {
+    grid-template-columns: 1fr;
+    padding: 100px 18px;
+  }
+  .about h2, .about > p:last-child { grid-column: 1; }
+  footer { grid-template-columns: 1fr; padding: 22px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
