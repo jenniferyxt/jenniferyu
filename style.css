@@ -69,13 +69,13 @@ button {
     visibility 800ms;
 }
 
-.cover--leaving {
+.cover.leaving {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.cover__image {
+.cover-image {
   position: absolute;
   inset: -1px;
   background-image: url("images/jennifer-yu-cover.webp");
@@ -86,8 +86,8 @@ button {
   transition: transform 1.6s cubic-bezier(0.2, 0.7, 0, 1);
 }
 
-.cover:has(.label-button:hover) .cover__image,
-.cover:has(.label-button:focus-visible) .cover__image {
+.cover:has(.label-button:hover) .cover-image,
+.cover:has(.label-button:focus-visible) .cover-image {
   transform: scale(1.025);
 }
 
@@ -108,7 +108,7 @@ button {
   outline-offset: 8px;
 }
 
-.cover__hint {
+.cover-hint {
   position: absolute;
   right: 24px;
   bottom: 19px;
@@ -154,7 +154,7 @@ button {
   mix-blend-mode: multiply;
 }
 
-.portfolio--visible {
+.portfolio.visible {
   opacity: 1;
   transform: none;
   pointer-events: auto;
@@ -379,7 +379,7 @@ button {
 }
 
 @media (max-width: 700px) {
-  .cover__image {
+  .cover-image {
     background-size: auto 100%;
   }
 
@@ -389,7 +389,7 @@ button {
     min-height: 90px;
   }
 
-  .cover__hint {
+  .cover-hint {
     right: 16px;
     bottom: 16px;
     font-size: 9px;
