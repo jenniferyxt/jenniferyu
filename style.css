@@ -40,7 +40,7 @@ button { color: inherit; font: inherit; }
 .cover-image {
   position: absolute;
   inset: -1px;
-  background: url("images/jennifer-yu-cover.png") center / cover no-repeat;
+  background: url("images/jennifer-yu-cover.webp") center / cover no-repeat;
   transform: scale(1.01);
   transition: transform 1.6s cubic-bezier(.2, .7, 0, 1);
 }
@@ -75,7 +75,7 @@ button { color: inherit; font: inherit; }
   min-height: 100svh;
   overflow: hidden;
   background-color: var(--linen);
-  background-image: url("images/linen-texture-fine.png");
+  background-image: url("images/linen-texture-fine.webp");
   background-position: center;
   background-repeat: repeat;
   background-size: min(950px, 100vw) auto;
