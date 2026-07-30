@@ -3,17 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Contact Jennifer Yu — Fashion Designer">
   <title>Contact — Jennifer Yu</title>
-  <link rel="stylesheet" href="style.css?v=20260730-2">
+  <link rel="stylesheet" href="style.css?v=20260730-contact">
   <style>.portfolio{opacity:1;transform:none;pointer-events:auto}.page-link{display:inline-block;text-decoration:none}</style>
 </head>
 <body>
   <main class="portfolio">
     <header class="site-header"><a class="wordmark page-link" href="about.html" aria-label="Return to Jennifer Yu's introduction">Jennifer Yu</a></header>
-    <section class="placeholder-page" aria-labelledby="contact-title">
-      <p class="placeholder-title" id="contact-title">Contact</p>
-      <p class="placeholder-page__note">This page will be designed next.</p>
+    <section class="contact-page" aria-labelledby="contact-title">
+      <nav class="main-menu contact-menu" aria-label="Portfolio">
+        <a class="stitched-link page-link" href="work.html">Work</a>
+        <a class="stitched-link page-link stitched-link--active" href="contact.html" aria-current="page">Contact</a>
+      </nav>
+      <div class="contact-layout">
+        <div class="contact-intro">
+          <h1 id="contact-title">Let’s connect.</h1>
+          <p>For internship opportunities, collaborations, and creative projects, feel free to reach out.</p>
+        </div>
+        <dl class="contact-list">
+          <div>
+            <dt>Email</dt>
+            <dd>
+              <span class="email-actions">
+                <a class="email-address" id="email-link" href="mailto:xintongyu0601@gmail.com">xintongyu0601@gmail.com</a>
+                <button class="copy-email" id="copy-email" type="button">Copy</button>
+                <span class="visually-hidden" id="copy-status" aria-live="polite"></span>
+              </span>
+            </dd>
+          </div>
+          <div><dt>Art Instagram</dt><dd><a href="https://www.instagram.com/_jenniferyu_/" target="_blank" rel="noreferrer">@_jenniferyu_</a></dd></div>
+          <div><dt>Personal Instagram</dt><dd><a href="https://www.instagram.com/xintongyuu/" target="_blank" rel="noreferrer">@xintongyuu</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/xintong-yu-71784a2b6/" target="_blank" rel="noreferrer">Xintong Yu</a></dd></div>
+          <div><dt>Resume</dt><dd><a href="resume/xintong-yu-resume.pdf" target="_blank" rel="noreferrer">View PDF</a></dd></div>
+          <div><dt>Based in</dt><dd>New York</dd></div>
+        </dl>
+      </div>
     </section>
   </main>
+  <script>
+    (() => {
+      const email = "xintongyu0601@gmail.com";
+      const emailLink = document.getElementById("email-link");
+      const copyButton = document.getElementById("copy-email");
+      const copyStatus = document.getElementById("copy-status");
+
+      emailLink.addEventListener("click", (event) => {
+        const touch = matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
+        if (!touch) {
+          event.preventDefault();
+          window.open(
+            "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(email),
+            "_blank",
+            "noopener,noreferrer"
+          );
+        }
+      });
+
+      copyButton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch {
+          const area = document.createElement("textarea");
+          area.value = email;
+          area.style.position = "fixed";
+          area.style.opacity = "0";
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand("copy");
+          area.remove();
+        }
+        copyButton.textContent = "Copied";
+        copyStatus.textContent = "Email address copied";
+        setTimeout(() => {
+          copyButton.textContent = "Copy";
+          copyStatus.textContent = "";
+        }, 1800);
+      });
+    })();
+  </script>
 </body>
 </html>

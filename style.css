@@ -162,7 +162,8 @@ button {
 
 .site-header,
 .about-page,
-.placeholder-page {
+.placeholder-page,
+.contact-page {
   position: relative;
   z-index: 1;
 }
@@ -404,7 +405,8 @@ button {
   }
 
   .about-page,
-  .placeholder-page {
+  .placeholder-page,
+  .contact-page {
     padding-right: 22px;
     padding-left: 22px;
   }
@@ -465,6 +467,204 @@ button {
   .social-link {
     width: 24px;
     height: 24px;
+  }
+}
+
+.contact-page {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100svh;
+  padding: clamp(94px, 14vh, 140px) clamp(24px, 4.2vw, 64px)
+    clamp(40px, 6vh, 72px);
+}
+
+.contact-menu {
+  align-self: start;
+}
+
+.stitched-link--active {
+  color: var(--hover);
+}
+
+.stitched-link--active::after {
+  height: 2px;
+  opacity: 0.82;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(330px, 1.1fr);
+  align-items: center;
+  gap: clamp(70px, 10vw, 170px);
+  width: min(1040px, 86vw);
+  margin: -2vh auto 0;
+}
+
+.contact-intro {
+  max-width: 440px;
+}
+
+.contact-intro h1 {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 76px);
+  font-weight: 300;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+}
+
+.contact-intro p {
+  max-width: 410px;
+  margin: 28px 0 0;
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.75;
+}
+
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(30px, 4vh, 46px) clamp(38px, 5vw, 76px);
+  margin: 0;
+}
+
+.contact-list div {
+  min-width: 0;
+}
+
+.contact-list dt {
+  margin: 0 0 10px;
+  color: rgba(48, 45, 41, 0.55);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-list dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(12px, 1.05vw, 15px);
+  line-height: 1.45;
+}
+
+.contact-list a {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  text-decoration: none;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.contact-list a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: currentColor;
+  opacity: 0.32;
+  transform-origin: left;
+  transition: opacity 220ms ease, transform 300ms ease;
+}
+
+.contact-list a:hover,
+.contact-list a:focus-visible {
+  color: var(--hover);
+  transform: translateX(3px);
+}
+
+.contact-list a:hover::after,
+.contact-list a:focus-visible::after {
+  opacity: 0.9;
+}
+
+.contact-list a:focus-visible {
+  outline: 1px dotted var(--hover);
+  outline-offset: 5px;
+}
+
+.email-actions {
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 13px;
+  max-width: 100%;
+}
+
+.copy-email {
+  padding: 2px 0;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 32%, transparent);
+  background: transparent;
+  color: color-mix(in srgb, var(--ink) 64%, transparent);
+  cursor: pointer;
+  font-size: 0.7em;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color 220ms ease, border-color 220ms ease;
+}
+
+.copy-email:hover,
+.copy-email:focus-visible {
+  color: var(--hover);
+  border-color: currentColor;
+}
+
+.copy-email:focus-visible {
+  outline: 1px dotted var(--hover);
+  outline-offset: 5px;
+}
+
+@media (max-width: 700px) {
+  .contact-page {
+    grid-template-rows: auto 1fr;
+    padding-top: 84px;
+    padding-bottom: 36px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 48px;
+    width: 100%;
+    margin: 0;
+    padding: 46px 0 18px;
+  }
+
+  .contact-intro h1 {
+    font-size: clamp(38px, 13vw, 58px);
+  }
+
+  .contact-intro p {
+    margin-top: 22px;
+    font-size: 12px;
+  }
+
+  .contact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 22px;
+  }
+
+  .contact-list dd {
+    font-size: 11px;
+  }
+
+  .email-actions {
+    width: 100%;
+    gap: 7px;
+  }
+
+  .email-address {
+    font-size: 9px;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+  }
+
+  .copy-email {
+    font-size: 7px;
+    letter-spacing: 0;
   }
 }
 
